@@ -57,6 +57,7 @@ export class ZoomRangeComponent implements AfterViewInit, OnDestroy {
     this.map.off('zoom', () => {});
     this.map.off('zoomend', () => {});
     this.map.off('move', () => {});
+    this.map.off('style.load', () => {});
   }
 
   public setZoom (zoom: string): void {
@@ -64,7 +65,6 @@ export class ZoomRangeComponent implements AfterViewInit, OnDestroy {
   }
 
   public zoomIn (): void {
-    this.map.getCenter
     this.map.zoomIn();
   }
 
