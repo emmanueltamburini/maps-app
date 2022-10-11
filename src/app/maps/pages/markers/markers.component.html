@@ -1,1 +1,22 @@
+<ul class="list-group">
+  <li class="list-group-item list-group-item-info" (click)="addMarker()">
+    <em class="bi bi-plus"></em> Add
+  </li>
+  <li
+    *ngFor="let marker of markers, let i = index"
+    class="list-group-item"
+    (click)="goMarker(marker.marker)"
+    (dblclick)="deleteMarker(i)"
+    [ngStyle]="{
+      backgroundColor: marker.color
+    }"
+  >
+    Marker {{ i+1 }}
+  </li>
+</ul>
+
+  <em class="message">
+    * You can do double click in a marker to erease it
+  </em>
+
 <div #divMap class="map-container"></div>
