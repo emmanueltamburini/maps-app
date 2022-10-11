@@ -1,1 +1,21 @@
-<p>real-estate works!</p>
+<div class="row mt-3">
+  <div class="col element">
+    <h1>Real Estate List</h1>
+    <hr>
+  </div>
+</div>
+<div class="row container">
+  <div class="col element">
+    <div class="row">
+      <div *ngFor="let realEstate of realEstates" class="col-4 mb-2">
+        <div class="card">
+          <app-mini-map [center]="realEstate.lngLat" class="card-img-top"></app-mini-map>
+          <div class="card-body">
+            <h5 class="card-title">{{realEstate.title}}</h5>
+            <p class="card-text">{{realEstate.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

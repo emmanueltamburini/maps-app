@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 
 @Component({
   selector: 'app-full-screen',
   templateUrl: './full-screen.component.html'
 })
-export class FullScreenComponent implements OnInit {
+export class FullScreenComponent implements OnInit, OnDestroy {
+
+  public map!: mapboxgl.Map;
 
   ngOnInit(): void {
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [-71.132664, 8.620822],
@@ -16,9 +18,13 @@ export class FullScreenComponent implements OnInit {
       projection: {name: 'globe'}
     });
 
-    map.on('style.load', () => {
-      map.setFog({});
+    this.map .on('style.load', () => {
+      this.map .setFog({});
     });
+  }
+
+  ngOnDestroy(): void {
+    this.map.off('style.load', () => {});
   }
 
 }
